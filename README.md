@@ -4,7 +4,7 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ---
 
-## 📸 Preview
+## 📽 Preview
 
 <!-- Add your app demo screenshot or video here -->
 ![Demo Screenshot](https://via.placeholder.com/800x400.png?text=AI-gen+Demo)
@@ -13,9 +13,29 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 🚀 Features
 
-### 📡 Curated AI Feeds
-- Automatically fetches the latest projects and papers from **GitHub**, **Hugging Face**, and **ArXiv**.
-- Categorizes content using **LLMs** to make browsing a breeze.
+
+## 🏠 Homepage Overview
+
+![AIgen Homepage](./Screenshot%202025-04-06%20193813.png)
+
+---
+
+### ⚡ Highlights
+
+- 🔔 **Real-Time Notifications** – Get instant updates on new AI tools, models, and research.
+- 🌗 **Dark/Light Mode** – Switch themes effortlessly based on your preference.
+- 📊 **Clean Dashboard** – Minimal, intuitive layout with everything within reach.
+- 📡 **Live AI Feed** – Scroll to explore the latest AI discoveries from GitHub, Hugging Face, and ArXiv.
+
+---
+
+### 🔮 Coming Soon (Next 3 Months)
+
+- ⚙️ **JS Feature Fixes** – Activate currently disabled elements for full interactivity.
+- 📲 **Mobile Support** – Optimized mobile view and PWA version.
+- 🧠 **Smart Insights** – Personalized AI updates based on user activity.
+
+
 
 ### 🧠 AI-Powered Summarization
 - Each piece of content is **summarized using AI**, making it quick to understand and easy to digest.
