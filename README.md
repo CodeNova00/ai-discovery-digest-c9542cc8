@@ -1,4 +1,4 @@
-# 🤖✨ AI-gen — Your AI Knowledge Companion
+# 🤖 AI-gen — Your AI Knowledge Companion
 
 Stay ahead of the curve in the ever-evolving world of Artificial Intelligence with **AI-gen** — a smart, centralized platform that curates, summarizes, and visualizes the latest developments in AI from top platforms like **GitHub**, **Hugging Face**, and **ArXiv**.
 
