@@ -82,35 +82,84 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 
 
-### 🧠 AI-Powered Summarization
-- Each piece of content is **summarized using AI**, making it quick to understand and easy to digest.
-- 🔗 **AI Summarizer** feature: Enter a URL of any AI-related content, and get a **downloadable summary** in seconds!
+## 📄 AI Research Summarizer
 
-### 🔍 Filter & Search
-- Easily find what you're looking for with smart **search** and **multi-level filters**.
-
-### 📨 Email Digest
-- Subscribe to receive personalized **email digests** of the most relevant AI updates.
-
-### 📈 AI Trends & Insights
-- Visual dashboards and analytics help track what's trending in AI.
-- 📄 **Download full reports** for deeper analysis.
-
-### 🗣️ Multilingual Chatbot
-- Chat with our smart assistant in **multiple languages**.
-- Summarization, Q&A, and recommendations — all in one place.
+![AIgen Summarizer Page](./your-summarizer-screenshot.png)
 
 ---
 
-## 💰 Pricing Plans
+### ⚡ Highlights  
+- 🧠 **Smart Summarization** – Get quick, point-wise summaries of AI research papers & technical content  
+- 🌐 **Multiple Input Options** – Upload a URL, PDF, or DOC to generate summaries  
+- ⏳ **Save Time** – Cut through dense content in seconds
+
+---
+
+### 🔮 Coming Soon (Next 3 Months)  
+- 🎙 **Voice Summarization** – Let the AI read and explain summaries out loud for a more immersive experience
+
+---
+
+
+## 💰 Pricing & Subscription
+
+![AIgen Pricing Page](./your-pricing-screenshot.png)
+
+---
+
+### ⚡ Highlights  
+- 💰 **Pricing Plans**
 
 | Tier           | Features Included                                           |
 |----------------|-------------------------------------------------------------|
 | 🆓Free         | Basic access, limited summaries & digests                  |
 | 💼 Pro         | Unlimited summaries, advanced filters, email digests       |
 | 🚀 Pro+        | All Pro features + full trend insights, chatbot, reports   |
+  
+- 💳 **Multiple Payment Methods** – Supports Credit Cards, PayPal, Google Pay (via Stripe)  
+- 🔒 **Secure Payments** – All transactions are safely processed  
+- 💸 **14-Day Money-Back Guarantee** – Full refund if not satisfied  
+- 👥 **Team Pricing** – Special offers for teams (5+ users) – contact sales
 
 ---
+
+### 🔮 Coming Soon (Next 3 Months)  
+- 📲 **QR Payment Support** – Quick checkout with QR code scanning  
+- ⚡ **Faster Checkout Flow** – Improved UX for seamless payments
+
+
+
+## 📘 About AIgen
+
+![AIgen About Page](./your-about-screenshot.png)
+
+---
+
+### ⚡ Highlights  
+- 🌐 **All-in-One AI Hub** – Discover, summarize, and track the latest AI innovations  
+- 🎯 **Our Mission** – Make AI exploration effortless and accessible to everyone  
+- ⚙️ **How It Works** – Aggregates data → Summarizes with AI → Presents insights  
+- 👩‍💻 **Meet the Developers** – Get to know the minds behind AIgen  
+- ❓ **FAQs** – Common questions answered in a simple, helpful way
+
+---
+
+
+## 🤖 AI Research Assistant
+
+![AIgen Chatbot Page](./your-chatbot-screenshot.png)
+
+---
+
+### ⚡ Highlights  
+- 💬 **Smart Conversations** – Chat with our AI assistant to explore research, tools, and AI trends  
+- 🌐 **Multilingual Support** – Trained in major Indian languages for wider accessibility  
+
+---
+
+### 🔮 Coming Soon (Next 3 Months)  
+- 🌍 **Global Language Expansion** – Adding support for global languages like German, Spanish, and more  
+
 
 ## 🛠️ Tech Stack
 
@@ -122,6 +171,9 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 - **Deployment**: Vercel / Render / MongoDB Atlas  
 
 ---
+
+## ✅ Conclusion  
+**AIgen is your one-stop destination to stay ahead in the fast-evolving world of AI — smarter, faster, and easier than ever.**
 
 ## 📦 Installation
 
