@@ -16,7 +16,7 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 🏠 Homepage Overview
 
-![AIgen Homepage](./Screenshot%202025-04-06%20193813.png)
+![image](https://github.com/user-attachments/assets/7a0f8d41-2a5d-4ccc-8891-aaa5682ea00f)
 
 ---
 
