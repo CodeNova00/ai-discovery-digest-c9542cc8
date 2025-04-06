@@ -2,6 +2,11 @@
 
 Stay ahead of the curve in the ever-evolving world of Artificial Intelligence with **AI-gen** — a smart, centralized platform that curates, summarizes, and visualizes the latest developments in AI from top platforms like **GitHub**, **Hugging Face**, and **ArXiv**.
 
+
+**THE LINK TO OUR WEBSITE IS:** https://gotoaigen.onrender.com/
+
+PLease wait for 15-30 sec for the website to open as it goes to sleep mode. (We are currently working on it)
+
 ---
 
 ## 📽 Preview
