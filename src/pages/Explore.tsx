@@ -22,8 +22,8 @@ const Explore = () => {
   };
 
   const handleTimeRangeSelect = (range: string) => {
-    setTimeRange(range);
-    toast.success(`Time range set to: ${range}`);
+    setTimeRange(range === timeRange ? null : range);
+    toast.success(`Time range ${range === timeRange ? "cleared" : `set to: ${range}`}`);
   };
 
   const handleLoadMore = () => {
@@ -36,8 +36,8 @@ const Explore = () => {
     const matchesCategory = selectedCategory ? discovery.category === selectedCategory : true;
     const matchesSearch = searchQuery
       ? discovery.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        discovery.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        discovery.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+        discovery.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (discovery.tags && discovery.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase())))
       : true;
     
     // Time range filtering (simplified for demo)
@@ -103,21 +103,21 @@ const Explore = () => {
               <div className="space-y-2">
                 <Button 
                   variant={timeRange === "Last Week" ? "default" : "outline"} 
-                  className="w-full justify-start"
+                  className="w-full justify-start text-primary-foreground"
                   onClick={() => handleTimeRangeSelect("Last Week")}
                 >
                   Last Week
                 </Button>
                 <Button 
                   variant={timeRange === "Last Month" ? "default" : "outline"} 
-                  className="w-full justify-start"
+                  className="w-full justify-start text-primary-foreground"
                   onClick={() => handleTimeRangeSelect("Last Month")}
                 >
                   Last Month
                 </Button>
                 <Button 
                   variant={timeRange === "Last 3 Months" ? "default" : "outline"} 
-                  className="w-full justify-start"
+                  className="w-full justify-start text-primary-foreground"
                   onClick={() => handleTimeRangeSelect("Last 3 Months")}
                 >
                   Last 3 Months
@@ -162,7 +162,13 @@ const Explore = () => {
 
           {displayedDiscoveries.length > 0 && displayedDiscoveries.length < filteredDiscoveries.length && (
             <div className="flex justify-center mt-10">
-              <Button onClick={handleLoadMore}>Load More</Button>
+              <Button 
+                onClick={handleLoadMore}
+                className="px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground"
+                size="lg"
+              >
+                Load More
+              </Button>
             </div>
           )}
         </div>

@@ -68,7 +68,7 @@ class ScrapingService {
       toast.info("Starting data collection from AI sources...");
       
       // Since we can't do actual scraping from the browser due to CORS restrictions,
-      // we're simulating the scraping with mock data
+      // we're simulating the scraping with mock data that looks like it came from real sources
       const mockData = await this.getMockScrapedData();
       
       toast.success("AI sources data collected successfully!");
@@ -92,7 +92,7 @@ class ScrapingService {
       github_daily: [
         {
           name: "llama3/llama3",
-          url: "https://github.com/llama3/llama3",
+          url: "https://github.com/meta-llama/llama3",
           description: "The latest open-source large language model from Meta AI",
           language: "Python",
           stars: "12.5k",
@@ -101,7 +101,7 @@ class ScrapingService {
         },
         {
           name: "openai/gpt-4-research",
-          url: "https://github.com/openai/gpt-4-research",
+          url: "https://github.com/openai/gpt-4",
           description: "Research papers and tools for experimenting with GPT-4",
           language: "Python",
           stars: "9.8k",
@@ -161,7 +161,7 @@ class ScrapingService {
         },
         {
           title: "stabilityai/stable-diffusion-3",
-          url: "https://huggingface.co/stabilityai/stable-diffusion-3",
+          url: "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0",
           author: "StabilityAI",
           stats: "Downloads: 890k",
           tags: ["Image Generation", "Diffusion Model"],

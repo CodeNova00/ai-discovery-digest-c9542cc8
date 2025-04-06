@@ -6,29 +6,19 @@ import { Eye, Share2, Bookmark, BookmarkCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
-
-interface DiscoveryCardProps {
-  id: string;
-  title: string;
-  summary: string;
-  date: string;
-  category: string;
-  source: string;
-  sourceUrl: string;
-  tags: string[];
-  image?: string;
-}
+import DiscoveryCardProps from "@/types/DiscoveryCard";
 
 const DiscoveryCard = ({
   id,
   title,
-  summary,
+  description,
   date,
   category,
   source,
-  sourceUrl,
-  tags,
-  image
+  url,
+  tags = [],
+  imageUrl,
+  className
 }: DiscoveryCardProps) => {
   const [saved, setSaved] = React.useState(false);
   const { isLoggedIn } = useAuth();
@@ -59,7 +49,7 @@ const DiscoveryCard = ({
     if (navigator.share) {
       navigator.share({
         title: title,
-        text: summary,
+        text: description,
         url: window.location.origin + "/discovery/" + id
       })
       .then(() => toast.success("Shared successfully"))
@@ -75,13 +65,13 @@ const DiscoveryCard = ({
   const fallbackShare = () => {
     // Fallback for browsers that don't support Web Share API
     navigator.clipboard.writeText(
-      `${title}\n\n${summary}\n\nCheck it out at: ${window.location.origin}/discovery/${id}`
+      `${title}\n\n${description}\n\nCheck it out at: ${window.location.origin}/discovery/${id}`
     );
     toast.success("Link copied to clipboard");
   };
 
   const handleCardClick = () => {
-    window.open(sourceUrl, "_blank", "noopener,noreferrer");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const getSourceIcon = () => {
@@ -99,13 +89,13 @@ const DiscoveryCard = ({
 
   return (
     <Card 
-      className="overflow-hidden hover:shadow-lg transition-all h-full flex flex-col cursor-pointer"
+      className={`overflow-hidden hover:shadow-lg transition-all h-full flex flex-col cursor-pointer ${className || ''}`}
       onClick={handleCardClick}
     >
-      {image && (
+      {imageUrl && (
         <div className="h-48 overflow-hidden">
           <img
-            src={image}
+            src={imageUrl}
             alt={title}
             className="w-full h-full object-cover object-center"
           />
@@ -122,7 +112,7 @@ const DiscoveryCard = ({
       </CardHeader>
       <CardContent className="flex-grow pb-0">
         <p className="text-muted-foreground text-sm line-clamp-4">
-          {summary}
+          {description}
         </p>
         <div className="flex flex-wrap gap-1 mt-4">
           {tags.slice(0, 3).map((tag, i) => (
@@ -172,7 +162,7 @@ const DiscoveryCard = ({
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              window.open(sourceUrl, "_blank", "noopener,noreferrer");
+              window.open(url, "_blank", "noopener,noreferrer");
             }}
             title="View source"
           >
