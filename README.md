@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+# 🤖✨ AI-gen — Your AI Knowledge Companion
 
-## Project info
+Stay ahead of the curve in the ever-evolving world of Artificial Intelligence with **AI-gen** — a smart, centralized platform that curates, summarizes, and visualizes the latest developments in AI from top platforms like **GitHub**, **Hugging Face**, and **ArXiv**.
 
-**URL**: https://lovable.dev/projects/8a4fb31b-b085-4aa2-84dd-952612130f8e
+---
 
-## How can I edit this code?
+## 📸 Preview
 
-There are several ways of editing your application.
+<!-- Add your app demo screenshot or video here -->
+![Demo Screenshot](https://via.placeholder.com/800x400.png?text=AI-gen+Demo)
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/8a4fb31b-b085-4aa2-84dd-952612130f8e) and start prompting.
+## 🚀 Features
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📡 Curated AI Feeds
+- Automatically fetches the latest projects and papers from **GitHub**, **Hugging Face**, and **ArXiv**.
+- Categorizes content using **LLMs** to make browsing a breeze.
 
-**Use your preferred IDE**
+### 🧠 AI-Powered Summarization
+- Each piece of content is **summarized using AI**, making it quick to understand and easy to digest.
+- 🔗 **AI Summarizer** feature: Enter a URL of any AI-related content, and get a **downloadable summary** in seconds!
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🔍 Filter & Search
+- Easily find what you're looking for with smart **search** and **multi-level filters**.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 📨 Email Digest
+- Subscribe to receive personalized **email digests** of the most relevant AI updates.
 
-Follow these steps:
+### 📈 AI Trends & Insights
+- Visual dashboards and analytics help track what's trending in AI.
+- 📄 **Download full reports** for deeper analysis.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🗣️ Multilingual Chatbot
+- Chat with our smart assistant in **multiple languages**.
+- Summarization, Q&A, and recommendations — all in one place.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 💰 Pricing Plans
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+| Tier           | Features Included                                           |
+|----------------|-------------------------------------------------------------|
+| 🆓Free         | Basic access, limited summaries & digests                  |
+| 💼 Pro         | Unlimited summaries, advanced filters, email digests       |
+| 🚀 Pro+        | All Pro features + full trend insights, chatbot, reports   |
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🛠️ Tech Stack
 
-**Use GitHub Codespaces**
+- **Frontend**: React.js, Tailwind CSS  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB  
+- **AI**: OpenAI / Hugging Face Transformers  
+- **Email Service**: NodeMailer  
+- **Deployment**: Vercel / Render / MongoDB Atlas  
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 📦 Installation
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/8a4fb31b-b085-4aa2-84dd-952612130f8e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```bash
+git clone https://github.com/your-username/AI-gen.git
+cd AI-gen
+npm install
+npm start
