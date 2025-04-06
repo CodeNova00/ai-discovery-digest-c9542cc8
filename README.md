@@ -39,7 +39,8 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 📊 AI Insights & Trends
 
-![AIgen Insights Page](./your-insights-screenshot.png)
+![image](https://github.com/user-attachments/assets/e6e1b410-8139-41ef-aacf-5177b7d00402)
+
 
 ---
 
@@ -62,7 +63,8 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 🔍 Explore Page
 
-![AIgen Explore Page](./your-explore-screenshot.png)
+![image](https://github.com/user-attachments/assets/fdf3b04b-fe1c-42cd-9c95-c5b9befe62c9)
+
 
 ---
 
@@ -83,8 +85,8 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 
 ## 📄 AI Research Summarizer
+![image](https://github.com/user-attachments/assets/27ff0a5e-a21e-44dc-9c37-4656adf120b6)
 
-![AIgen Summarizer Page](./your-summarizer-screenshot.png)
 
 ---
 
@@ -103,7 +105,8 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 💰 Pricing & Subscription
 
-![AIgen Pricing Page](./your-pricing-screenshot.png)
+![image](https://github.com/user-attachments/assets/26be00e1-ad21-4d14-8a56-c0eb4f49d53a)
+
 
 ---
 
@@ -131,7 +134,8 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 📘 About AIgen
 
-![AIgen About Page](./your-about-screenshot.png)
+![image](https://github.com/user-attachments/assets/c852c98f-f82f-401d-a64f-3d92819c075e)
+
 
 ---
 
@@ -147,7 +151,7 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 ## 🤖 AI Research Assistant
 
-![AIgen Chatbot Page](./your-chatbot-screenshot.png)
+![image](https://github.com/user-attachments/assets/0c61c002-2ef4-41cc-9afb-80ac66ec8a35)
 
 ---
 
