@@ -37,6 +37,51 @@ Stay ahead of the curve in the ever-evolving world of Artificial Intelligence wi
 
 
 
+## 📊 AI Insights & Trends
+
+![AIgen Insights Page](./your-insights-screenshot.png)
+
+---
+
+### ⚡ Highlights  
+- 📈 **Live Analytics** – Real-time graphs for:
+  - AI Categories  
+  - Sources  
+  - Update Trends  
+  - Popular Tags  
+- 🔢 **Insightful Numbers** – Quick breakdowns for easy understanding  
+- 📥 **Download Reports** – Export current AI trend data anytime
+
+---
+
+### 🔮 Coming Soon (Next 3 Months)  
+- 🎨 UI/CSS enhancements for a cleaner visual  
+- 💡 Interactive graphs with hover effects and filters
+
+
+
+## 🔍 Explore Page
+
+![AIgen Explore Page](./your-explore-screenshot.png)
+
+---
+
+### ⚡ Highlights
+
+- 🧠 **Latest Discoveries** – Browse cutting-edge AI tools, research papers, and models.
+- 🔎 **Smart Filters** – Sort by category (e.g. NLP, Vision), and source (GitHub, Hugging Face, ArXiv).
+- 🗂️ **Organized & Accessible** – Quickly scan the landscape of AI developments.
+
+---
+
+### 🔮 Coming Soon (Next 3 Months)
+
+- 🔗 **Clickable Cards** – Redirect directly to the original source from any discovery card.
+- 🕒 **Time-Based Filters** – View results by recency: *Last 24h, Weekly, Monthly, Yearly*.
+- 📌 **Pinned Categories** – Highlight trending or most-viewed discoveries.
+
+
+
 ### 🧠 AI-Powered Summarization
 - Each piece of content is **summarized using AI**, making it quick to understand and easy to digest.
 - 🔗 **AI Summarizer** feature: Enter a URL of any AI-related content, and get a **downloadable summary** in seconds!
