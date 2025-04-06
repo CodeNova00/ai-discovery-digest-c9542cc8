@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
+import PaymentService from "@/services/PaymentService";
 
 interface PlanFeature {
   name: string;
@@ -98,7 +99,7 @@ const Subscription = () => {
     },
   ];
   
-  const handleSubscription = (planId: string) => {
+  const handleSubscription = async (planId: string) => {
     if (!isLoggedIn) {
       toast.error("Please login to subscribe");
       return;
@@ -106,11 +107,20 @@ const Subscription = () => {
     
     setProcessing(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      if (planId === "free") {
+        await PaymentService.subscribeToFreePlan();
+      } else if (planId === "pro") {
+        await PaymentService.subscribeToProPlan(billingCycle);
+      } else if (planId === "pro-plus") {
+        await PaymentService.subscribeToPlusPlan(billingCycle);
+      }
+    } catch (error) {
+      console.error("Subscription error:", error);
+      toast.error("An error occurred during subscription. Please try again.");
+    } finally {
       setProcessing(false);
-      toast.success(`Successfully subscribed to ${planId} plan!`);
-    }, 2000);
+    }
   };
 
   const getButtonText = (planId: string) => {

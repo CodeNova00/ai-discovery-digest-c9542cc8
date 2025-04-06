@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { 
@@ -14,7 +13,8 @@ import {
   BookOpen,
   MessageSquare,
   LayoutDashboard,
-  Sparkles
+  Sparkles,
+  CreditCard
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -40,6 +40,7 @@ const navItems = [
   { name: "Research Digest", path: "/digest" },
   { name: "AI Summarizer", path: "/summarizer" },
   { name: "Chatbot", path: "/chatbot" },
+  { name: "Pricing", path: "/subscription" },
   { name: "About", path: "/about" }
 ];
 
@@ -98,7 +99,6 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
               src="/lovable-uploads/af3c3252-cefa-4ccf-8477-6edcddba246c.png"
@@ -108,7 +108,6 @@ const Navbar = () => {
             <span className="font-bold text-xl md:text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AIgen</span>
           </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-1">
             {navItems.map((item) => (
               <Link
@@ -126,7 +125,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right Side Items */}
           <div className="flex items-center space-x-2">
             <Button 
               variant="outline" 
@@ -137,7 +135,6 @@ const Navbar = () => {
               <Search className="h-5 w-5" />
             </Button>
             
-            {/* Notification Bell */}
             <Popover>
               <PopoverTrigger asChild>
                 <Button variant="outline" size="icon" className="relative">
@@ -229,7 +226,6 @@ const Navbar = () => {
               </Button>
             )}
 
-            {/* Mobile Menu Button */}
             <Button 
               variant="ghost" 
               size="icon" 
@@ -242,7 +238,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="px-2 pt-2 pb-3 space-y-1">

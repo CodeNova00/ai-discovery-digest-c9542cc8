@@ -1,12 +1,54 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Github, Twitter, Mail, ArrowRight, MessagesSquare, Heart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { toast } from "sonner";
 
 const AboutPage = () => {
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setContactForm(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      console.log("Sending email to ranaakshat45@gmail.com with:", contactForm);
+      
+      // In a real implementation, this would send the data to your backend
+      toast.success("Message sent successfully! We'll get back to you soon.");
+      
+      // Reset form
+      setContactForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
@@ -94,7 +136,7 @@ const AboutPage = () => {
           <Card className="overflow-hidden">
             <div className="h-60 overflow-hidden">
               <img 
-                src="/lovable-uploads/e07e8ca6-4c68-4f4d-b85c-572040c0f95f.png" 
+                src="/lovable-uploads/434ee80a-9146-405c-bf35-e91f795c14da.png" 
                 alt="Akshat Singh" 
                 className="w-full h-full object-cover object-center"
               />
@@ -206,14 +248,17 @@ const AboutPage = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleContactSubmit}>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium">Name</label>
                     <input
                       id="name"
+                      value={contactForm.name}
+                      onChange={handleInputChange}
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                       placeholder="Your name"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
@@ -221,8 +266,11 @@ const AboutPage = () => {
                     <input
                       id="email"
                       type="email"
+                      value={contactForm.email}
+                      onChange={handleInputChange}
                       className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                       placeholder="your@email.com"
+                      required
                     />
                   </div>
                 </div>
@@ -230,19 +278,27 @@ const AboutPage = () => {
                   <label htmlFor="subject" className="text-sm font-medium">Subject</label>
                   <input
                     id="subject"
+                    value={contactForm.subject}
+                    onChange={handleInputChange}
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                     placeholder="How can we help?"
+                    required
                   />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium">Message</label>
                   <textarea
                     id="message"
+                    value={contactForm.message}
+                    onChange={handleInputChange}
                     className="flex h-32 w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none"
                     placeholder="Your message..."
+                    required
                   />
                 </div>
-                <Button className="w-full">Send Message</Button>
+                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </Button>
               </form>
             </CardContent>
           </Card>
@@ -297,15 +353,15 @@ const AboutPage = () => {
               
               <div>
                 <h3 className="text-sm font-medium mb-2">Email Us Directly</h3>
-                <a href="mailto:hello@aigen.ai" className="text-primary hover:underline">
-                  hello@aigen.ai
+                <a href="mailto:ranaakshat45@gmail.com" className="text-primary hover:underline">
+                  ranaakshat45@gmail.com
                 </a>
               </div>
               
               <div>
                 <h3 className="text-sm font-medium mb-2">Location</h3>
                 <p className="text-sm text-muted-foreground">
-                  Bengaluru, Karnataka, India
+                  Bhopal, Madhya Pradesh, India
                 </p>
               </div>
             </CardContent>

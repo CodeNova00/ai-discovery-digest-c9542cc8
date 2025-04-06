@@ -5,10 +5,13 @@ import DiscoveryCard from "@/components/DiscoveryCard";
 import SearchBar from "@/components/SearchBar";
 import CategoryFilter from "@/components/CategoryFilter";
 import { mockDiscoveries, categoryCount } from "@/data/mockDiscoveries";
+import { toast } from "sonner";
 
 const Explore = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [timeRange, setTimeRange] = useState<string | null>(null);
+  const [displayLimit, setDisplayLimit] = useState(10);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -18,7 +21,17 @@ const Explore = () => {
     setSelectedCategory(category);
   };
 
-  // Filter discoveries based on selected category and search query
+  const handleTimeRangeSelect = (range: string) => {
+    setTimeRange(range);
+    toast.success(`Time range set to: ${range}`);
+  };
+
+  const handleLoadMore = () => {
+    setDisplayLimit(prev => prev + 10);
+    toast.success("Loading more discoveries...");
+  };
+
+  // Filter discoveries based on selected category, search query, and time range
   const filteredDiscoveries = mockDiscoveries.filter((discovery) => {
     const matchesCategory = selectedCategory ? discovery.category === selectedCategory : true;
     const matchesSearch = searchQuery
@@ -26,8 +39,27 @@ const Explore = () => {
         discovery.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
         discovery.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
       : true;
-    return matchesCategory && matchesSearch;
+    
+    // Time range filtering (simplified for demo)
+    let matchesTimeRange = true;
+    if (timeRange) {
+      const now = new Date();
+      const publishDate = new Date(discovery.date);
+      const daysDiff = Math.floor((now.getTime() - publishDate.getTime()) / (1000 * 3600 * 24));
+      
+      if (timeRange === "Last Week" && daysDiff > 7) {
+        matchesTimeRange = false;
+      } else if (timeRange === "Last Month" && daysDiff > 30) {
+        matchesTimeRange = false;
+      } else if (timeRange === "Last 3 Months" && daysDiff > 90) {
+        matchesTimeRange = false;
+      }
+    }
+    
+    return matchesCategory && matchesSearch && matchesTimeRange;
   });
+
+  const displayedDiscoveries = filteredDiscoveries.slice(0, displayLimit);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -69,13 +101,25 @@ const Explore = () => {
             <div className="space-y-4">
               <h3 className="text-lg font-bold">Time Range</h3>
               <div className="space-y-2">
-                <Button variant="outline" className="w-full justify-start">
+                <Button 
+                  variant={timeRange === "Last Week" ? "default" : "outline"} 
+                  className="w-full justify-start"
+                  onClick={() => handleTimeRangeSelect("Last Week")}
+                >
                   Last Week
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
+                <Button 
+                  variant={timeRange === "Last Month" ? "default" : "outline"} 
+                  className="w-full justify-start"
+                  onClick={() => handleTimeRangeSelect("Last Month")}
+                >
                   Last Month
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
+                <Button 
+                  variant={timeRange === "Last 3 Months" ? "default" : "outline"} 
+                  className="w-full justify-start"
+                  onClick={() => handleTimeRangeSelect("Last 3 Months")}
+                >
                   Last 3 Months
                 </Button>
               </div>
@@ -89,6 +133,7 @@ const Explore = () => {
               {filteredDiscoveries.length} Results
               {selectedCategory && ` in ${selectedCategory}`}
               {searchQuery && ` for "${searchQuery}"`}
+              {timeRange && ` from ${timeRange}`}
             </h2>
             <div className="flex items-center space-x-2">
               <span className="text-sm text-muted-foreground">Sort by:</span>
@@ -100,9 +145,9 @@ const Explore = () => {
             </div>
           </div>
 
-          {filteredDiscoveries.length > 0 ? (
+          {displayedDiscoveries.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {filteredDiscoveries.map((discovery) => (
+              {displayedDiscoveries.map((discovery) => (
                 <DiscoveryCard key={discovery.id} {...discovery} />
               ))}
             </div>
@@ -115,9 +160,9 @@ const Explore = () => {
             </div>
           )}
 
-          {filteredDiscoveries.length > 0 && (
+          {displayedDiscoveries.length > 0 && displayedDiscoveries.length < filteredDiscoveries.length && (
             <div className="flex justify-center mt-10">
-              <Button>Load More</Button>
+              <Button onClick={handleLoadMore}>Load More</Button>
             </div>
           )}
         </div>
