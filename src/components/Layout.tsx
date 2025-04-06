@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-background bg-[radial-gradient(ellipse_at_top,rgba(93,0,255,0.1),transparent_50%),radial-gradient(ellipse_at_bottom_right,rgba(102,0,255,0.05),transparent_70%)]">
       <Navbar />
       <main className="flex-grow">
         {children}

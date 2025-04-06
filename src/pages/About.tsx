@@ -1,223 +1,352 @@
 
 import React from "react";
-import { Github, Twitter, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Github, Twitter, Mail, ArrowRight, MessagesSquare, Heart } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const About = () => {
+const AboutPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Hero */}
-      <section className="py-12 text-center">
-        <h1 className="text-4xl font-bold mb-4">About AIgen</h1>
-        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-          Connecting AI researchers, developers, and enthusiasts with the latest breakthroughs
-          in artificial intelligence research and tools.
+      {/* Hero Section */}
+      <section className="text-center max-w-4xl mx-auto space-y-6 mb-16">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          About AIgen
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          Your gateway to the world of artificial intelligence research and innovation
         </p>
       </section>
 
-      {/* Mission */}
-      <section className="py-12">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-          <p className="text-lg text-muted-foreground mb-6">
-            At AIgen, we're on a mission to make AI research more accessible, understandable, and
-            actionable for everyone interested in artificial intelligence. We believe that by
-            aggregating, summarizing, and analyzing the latest AI research and tools, we can
-            help accelerate innovation and discovery in the field.
+      {/* Our Mission */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold mb-8 text-center">Our Mission</h2>
+        <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-8 rounded-lg backdrop-blur-sm border">
+          <p className="text-lg mb-4">
+            AIgen was founded with a simple but powerful mission: to make AI research accessible to everyone. 
+            We believe that the rapid pace of AI innovation should be accessible not just to specialists, 
+            but to students, developers, and enthusiasts across the globe.
           </p>
-          <p className="text-lg text-muted-foreground">
-            Our platform is designed to save researchers, developers, students, and AI enthusiasts
-            valuable time by providing concise summaries and insights, allowing them to focus on
-            what matters most – applying and building upon these innovations.
+          <p className="text-lg">
+            By curating, summarizing, and contextualizing the latest AI breakthroughs, we're building 
+            a platform that empowers users to stay informed and inspired by the cutting edge of 
+            artificial intelligence—without needing to spend hours sifting through technical papers.
           </p>
         </div>
       </section>
 
-      {/* How it Works */}
-      <section className="py-12 bg-muted rounded-lg">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">How AIgen Works</h2>
-          <div className="space-y-8">
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-16 flex justify-center">
-                <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                  1
-                </div>
+      {/* How AIgen Works */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold mb-8 text-center">How AIgen Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <Card className="bg-card shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center">
+              <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <span className="font-bold text-primary">1</span>
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">AI Data Collection</h3>
-                <p className="text-muted-foreground">
-                  We continuously monitor and collect data from leading AI sources like GitHub,
-                  Hugging Face, and ArXiv to identify the latest developments in AI research,
-                  models, and tools.
-                </p>
+              <CardTitle className="text-xl">Collection</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground">
+                We aggregate research papers, models, and tools from top sources including ArXiv, 
+                GitHub, and Hugging Face using advanced web scraping and APIs.
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-card shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center">
+              <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <span className="font-bold text-primary">2</span>
               </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-16 flex justify-center">
-                <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                  2
-                </div>
+              <CardTitle className="text-xl">Analysis</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground">
+                Our AI system processes and analyzes the content to generate concise summaries, 
+                extract key points, and categorize each item by relevance and topic.
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="bg-card shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center">
+              <div className="w-12 h-12 mx-auto bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <span className="font-bold text-primary">3</span>
               </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Smart Summarization</h3>
-                <p className="text-muted-foreground">
-                  Using advanced AI, we generate concise summaries of complex research papers
-                  and tools, extracting key insights, methodologies, and results. We also
-                  categorize and tag content for easy discovery.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-16 flex justify-center">
-                <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                  3
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Insights & Analytics</h3>
-                <p className="text-muted-foreground">
-                  We analyze trends and patterns in AI research to provide valuable insights
-                  into the direction and pace of AI development across different domains and
-                  applications.
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="md:w-16 flex justify-center">
-                <div className="h-12 w-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                  4
-                </div>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold mb-2">Personalized Delivery</h3>
-                <p className="text-muted-foreground">
-                  Users can subscribe to customized email digests based on their interests,
-                  ensuring they never miss important developments in their specific areas of
-                  interest in AI.
-                </p>
-              </div>
-            </div>
-          </div>
+              <CardTitle className="text-xl">Delivery</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center">
+              <p className="text-muted-foreground">
+                The curated content is presented through our platform and delivered 
+                via customizable email digests based on your preferences and interests.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-12">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card>
-              <CardContent className="pt-6">
-                <div className="text-center">
-                  <div className="h-24 w-24 rounded-full bg-muted mx-auto mb-4"></div>
-                  <h3 className="text-xl font-bold">Akshat Singh</h3>
-                  <p className="text-muted-foreground mb-2">Co-Founder & AI Researcher</p>
-                  <div className="flex justify-center space-x-2">
-                    <Button variant="ghost" size="icon">
-                      <Github className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Twitter className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Mail className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="pt-6">
-                <div className="text-center">
-                  <div className="h-24 w-24 rounded-full bg-muted mx-auto mb-4"></div>
-                  <h3 className="text-xl font-bold">Sejal Mishra</h3>
-                  <p className="text-muted-foreground mb-2">Co-Founder & ML Engineer</p>
-                  <div className="flex justify-center space-x-2">
-                    <Button variant="ghost" size="icon">
-                      <Github className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Twitter className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon">
-                      <Mail className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+      {/* Meet the Team */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold mb-8 text-center">Meet the Team</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card className="overflow-hidden">
+            <div className="h-60 overflow-hidden">
+              <img 
+                src="/lovable-uploads/e07e8ca6-4c68-4f4d-b85c-572040c0f95f.png" 
+                alt="Akshat Singh" 
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+            <CardHeader>
+              <CardTitle>Akshat Singh</CardTitle>
+              <CardDescription>Co-Founder & Lead Developer</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                AI researcher and full-stack developer with a passion for making complex technologies accessible to everyone.
+              </p>
+              <div className="flex space-x-2">
+                <Button variant="outline" size="icon">
+                  <Github className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <Twitter className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <Mail className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card className="overflow-hidden">
+            <div className="h-60 overflow-hidden">
+              <img 
+                src="/lovable-uploads/2da56150-349c-4c09-9435-de2aae1cf816.png" 
+                alt="Sejal Mishra" 
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+            <CardHeader>
+              <CardTitle>Sejal Mishra</CardTitle>
+              <CardDescription>Co-Founder & Research Lead</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-4">
+                NLP specialist with experience in building AI-powered summarization systems and content curation algorithms.
+              </p>
+              <div className="flex space-x-2">
+                <Button variant="outline" size="icon">
+                  <Github className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <Twitter className="h-4 w-4" />
+                </Button>
+                <Button variant="outline" size="icon">
+                  <Mail className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* FAQs */}
-      <section className="py-12">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger>How often is AIgen updated with new content?</AccordionTrigger>
-              <AccordionContent>
-                AIgen is updated daily with the latest AI research papers, tools, and models from
-                our monitored sources. Our automated systems continuously scan for new entries,
-                ensuring you always have access to the most recent developments.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>How do I customize my email digest?</AccordionTrigger>
-              <AccordionContent>
-                After signing up, you can visit your profile settings to customize your email
-                digest preferences. You can select specific categories, sources, and frequency
-                (daily or weekly) to receive updates tailored to your interests.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Is AIgen free to use?</AccordionTrigger>
-              <AccordionContent>
-                Yes, AIgen offers a free tier that provides access to basic features including
-                browsing recent discoveries and limited email digests. We also offer a Pro tier
-                with additional features like advanced filtering, full archive access, and
-                customizable alerts.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>How accurate are the AI-generated summaries?</AccordionTrigger>
-              <AccordionContent>
-                Our AI-generated summaries are designed to capture the key points and insights
-                from research papers and tool documentation. While we strive for high accuracy,
-                we always recommend referring to the original sources for critical research or
-                implementation details.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-5">
-              <AccordionTrigger>Can I suggest a source to be included in AIgen?</AccordionTrigger>
-              <AccordionContent>
-                Absolutely! We welcome suggestions for additional sources to monitor. Please
-                contact us through the form on our website with details about the source you'd
-                like us to include, and our team will evaluate it for potential addition.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+      <section className="max-w-4xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value="item-1">
+            <AccordionTrigger>How often is the content updated?</AccordionTrigger>
+            <AccordionContent>
+              Our platform scans and updates with new AI research papers, tools, and models daily. The digest email frequency can be customized to daily, weekly, or monthly according to your preferences.
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-2">
+            <AccordionTrigger>Is AIgen free to use?</AccordionTrigger>
+            <AccordionContent>
+              AIgen offers both free and premium subscription tiers. The free plan provides access to basic features, while premium plans offer additional capabilities like unlimited AI summarization, custom digests, and priority support.
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-3">
+            <AccordionTrigger>How are the AI summaries generated?</AccordionTrigger>
+            <AccordionContent>
+              We use state-of-the-art natural language processing models to analyze and summarize content. Our system is designed to extract the most important information while preserving the core concepts and technical accuracy.
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-4">
+            <AccordionTrigger>Can I customize what content I receive?</AccordionTrigger>
+            <AccordionContent>
+              Yes! You can customize your digest by selecting specific categories of interest (like NLP, Computer Vision, or Reinforcement Learning) and setting your preferred delivery frequency.
+            </AccordionContent>
+          </AccordionItem>
+          
+          <AccordionItem value="item-5">
+            <AccordionTrigger>Do you have an API?</AccordionTrigger>
+            <AccordionContent>
+              We're currently developing an API that will allow developers to integrate AIgen's data and summaries into their own applications. Join our waitlist to be notified when it becomes available.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </section>
+
+      {/* Get in Touch */}
+      <section className="max-w-4xl mx-auto mb-16">
+        <h2 className="text-2xl font-bold mb-8 text-center">Get in Touch</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Contact Us</CardTitle>
+              <CardDescription>
+                Have questions or feedback? We'd love to hear from you.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium">Name</label>
+                    <input
+                      id="name"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium">Email</label>
+                    <input
+                      id="email"
+                      type="email"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="subject" className="text-sm font-medium">Subject</label>
+                  <input
+                    id="subject"
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+                    placeholder="How can we help?"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label htmlFor="message" className="text-sm font-medium">Message</label>
+                  <textarea
+                    id="message"
+                    className="flex h-32 w-full rounded-md border border-input bg-background px-3 py-2 text-sm resize-none"
+                    placeholder="Your message..."
+                  />
+                </div>
+                <Button className="w-full">Send Message</Button>
+              </form>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardHeader>
+              <CardTitle>Connect With Us</CardTitle>
+              <CardDescription>
+                Follow us on social media or join our community.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4">
+                  <Button variant="outline" size="icon">
+                    <Github className="h-4 w-4" />
+                  </Button>
+                  <div>
+                    <h3 className="text-sm font-medium">GitHub</h3>
+                    <p className="text-xs text-muted-foreground">
+                      Follow our open source projects
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <Button variant="outline" size="icon">
+                    <Twitter className="h-4 w-4" />
+                  </Button>
+                  <div>
+                    <h3 className="text-sm font-medium">Twitter</h3>
+                    <p className="text-xs text-muted-foreground">
+                      Stay updated with the latest announcements
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-4">
+                  <Button variant="outline" size="icon">
+                    <MessagesSquare className="h-4 w-4" />
+                  </Button>
+                  <div>
+                    <h3 className="text-sm font-medium">Discord Community</h3>
+                    <p className="text-xs text-muted-foreground">
+                      Join discussions with other AI enthusiasts
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <Separator />
+              
+              <div>
+                <h3 className="text-sm font-medium mb-2">Email Us Directly</h3>
+                <a href="mailto:hello@aigen.ai" className="text-primary hover:underline">
+                  hello@aigen.ai
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="text-sm font-medium mb-2">Location</h3>
+                <p className="text-sm text-muted-foreground">
+                  Bengaluru, Karnataka, India
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="py-12 bg-gradient-blue-purple rounded-lg text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
-          <p className="text-lg mb-8 opacity-90">
-            Have questions, feedback, or suggestions? We'd love to hear from you!
-          </p>
-          <Button variant="secondary" size="lg">
-            Contact Us
-          </Button>
-        </div>
+      {/* CTA */}
+      <section className="max-w-4xl mx-auto">
+        <Card className="bg-gradient-to-r from-primary to-secondary text-primary-foreground">
+          <CardHeader>
+            <CardTitle className="text-center text-2xl">Ready to dive into AI research?</CardTitle>
+          </CardHeader>
+          <CardContent className="text-center">
+            <p className="mb-6 opacity-90">
+              Join thousands of researchers, developers, and AI enthusiasts who are staying at the forefront of AI innovation.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button 
+                variant="secondary" 
+                size="lg"
+                onClick={() => window.location.href = "/explore"}
+              >
+                Start Exploring
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="bg-white/10 hover:bg-white/20 border-white/20"
+                onClick={() => window.location.href = "/digest"}
+              >
+                Subscribe to Digest
+                <Heart className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </section>
     </div>
   );
 };
 
-export default About;
+export default AboutPage;

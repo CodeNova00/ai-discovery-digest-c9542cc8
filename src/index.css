@@ -75,6 +75,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-position: 0 0;
+    background-size: 100% 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -108,7 +110,21 @@
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-blue-purple text-transparent bg-clip-text;
+    @apply bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text;
+  }
+
+  .gradient-border {
+    @apply relative p-0.5 rounded-lg;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  }
+  
+  .gradient-border::before {
+    @apply absolute inset-0.5 bg-background rounded-[calc(theme(borderRadius.lg)-1px)] z-0 pointer-events-none;
+    content: "";
+  }
+  
+  .gradient-border > * {
+    @apply relative z-10;
   }
 
   .shimmer {
@@ -122,6 +138,76 @@
   .pill {
     @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
   }
+  
+  .futuristic-glow {
+    box-shadow: 0 0 15px rgba(120, 80, 255, 0.5);
+  }
+  
+  .highlight-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    @apply ring-2 ring-primary;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* AI Glow Effects */
+.ai-glow {
+  position: relative;
+}
+
+.ai-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(45deg, rgba(93, 0, 255, 0.5), rgba(230, 0, 255, 0.5));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ai-glow:hover::after {
+  opacity: 1;
+}
+
+/* Futuristic Background */
+.bg-grid {
+  background-image: 
+    linear-gradient(rgba(93, 0, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(93, 0, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
 /* Custom scrollbar */
@@ -139,4 +225,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-primary/80;
+}
+
+/* Home page specific styles */
+.home-search-bar {
+  transition: all 0.3s ease;
+}
+
+.home-search-bar.highlight-pulse {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 5px rgba(93, 0, 255, 0.2);
 }

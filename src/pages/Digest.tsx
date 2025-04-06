@@ -2,206 +2,331 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Mail, Check, AlertCircle, ArrowRight, Calendar, Sparkles } from "lucide-react";
 import { toast } from "sonner";
-import { Mail, Check } from "lucide-react";
-import { categoryCount } from "@/data/mockDiscoveries";
+import { mockDiscoveries } from "@/data/mockDiscoveries";
+import { useAuth } from "@/hooks/useAuth";
 
 const Digest = () => {
-  const [email, setEmail] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const [frequency, setFrequency] = useState("daily");
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleCategoryToggle = (category: string) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
-    }
+  const { isLoggedIn, user } = useAuth();
+  const [email, setEmail] = useState(user?.email || "");
+  const [name, setName] = useState(user?.displayName || "");
+  const [frequency, setFrequency] = useState("weekly");
+  const [categories, setCategories] = useState<string[]>(["NLP", "CV"]);
+  const [submitting, setSubmitting] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
+  
+  const categoryOptions = [
+    { id: "NLP", label: "Natural Language Processing" },
+    { id: "CV", label: "Computer Vision" },
+    { id: "Multimodal", label: "Multimodal Learning" },
+    { id: "RL", label: "Reinforcement Learning" },
+    { id: "MLOps", label: "MLOps & Deployment" },
+    { id: "Ethics", label: "AI Ethics & Safety" },
+  ];
+  
+  const handleCategoryChange = (category: string) => {
+    setCategories(prev =>
+      prev.includes(category)
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
   };
-
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (!email) {
       toast.error("Please enter your email address");
       return;
     }
     
-    // In a real app, this would send the data to a server
-    console.log("Subscription data:", { email, selectedCategories, frequency });
+    if (!email.includes('@')) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
     
-    toast.success("Successfully subscribed to the AI digest!");
-    setSubmitted(true);
+    if (categories.length === 0) {
+      toast.error("Please select at least one category");
+      return;
+    }
+    
+    setSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setSubmitting(false);
+      setSubscribed(true);
+      toast.success("Successfully subscribed to AI Digest!");
+    }, 1500);
   };
+  
+  // Sample digest items based on mockDiscoveries
+  const digestItems = mockDiscoveries.slice(0, 5);
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="space-y-6 text-center max-w-3xl mx-auto mb-12">
-        <h1 className="text-3xl font-bold">AI Research Digest</h1>
+      <div className="space-y-6 text-center max-w-3xl mx-auto mb-10">
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          AI Research Digest
+        </h1>
         <p className="text-xl text-muted-foreground">
-          Subscribe to receive the latest AI discoveries directly in your inbox,
-          customized to your interests and preferences.
+          Stay updated with the latest AI research and developments delivered straight to your inbox
         </p>
       </div>
 
-      <div className="max-w-3xl mx-auto">
-        {submitted ? (
-          <Card className="text-center">
-            <CardContent className="pt-10 pb-10">
-              <div className="mx-auto w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center mb-6">
-                <Check className="h-6 w-6 text-green-600 dark:text-green-300" />
-              </div>
-              <h2 className="text-2xl font-bold mb-2">Subscription Confirmed!</h2>
-              <p className="text-muted-foreground mb-6">
-                You'll start receiving your AI digest at {email} based on your preferences.
-              </p>
-              <Button onClick={() => setSubmitted(false)}>Manage Preferences</Button>
-            </CardContent>
-          </Card>
-        ) : (
-          <Card>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div>
+          <Card className="shadow-md hover:shadow-lg transition-shadow h-full">
             <CardHeader>
-              <CardTitle>Subscribe to AI Digest</CardTitle>
+              <CardTitle>Preview Digest</CardTitle>
               <CardDescription>
-                Customize your digest to receive updates on the topics that matter most to you
+                See what our AI digest looks like
               </CardDescription>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+            <CardContent className="space-y-4">
+              <div className="border rounded-md p-4 bg-card space-y-4">
+                <div className="flex items-center justify-between">
+                  <h3 className="font-bold text-lg">AIgen Weekly Digest</h3>
+                  <span className="text-xs text-muted-foreground">April 6, 2025</span>
                 </div>
-
-                <div className="space-y-4">
-                  <Label>Delivery Frequency</Label>
-                  <Tabs defaultValue="daily" value={frequency} onValueChange={setFrequency} className="w-full">
-                    <TabsList className="grid w-full grid-cols-2">
-                      <TabsTrigger value="daily">Daily</TabsTrigger>
-                      <TabsTrigger value="weekly">Weekly</TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="daily" className="pt-4">
-                      <p className="text-sm text-muted-foreground">
-                        Receive a digest with the most important AI discoveries every day.
-                      </p>
-                    </TabsContent>
-                    <TabsContent value="weekly" className="pt-4">
-                      <p className="text-sm text-muted-foreground">
-                        Receive a comprehensive weekly roundup of all significant AI developments.
-                      </p>
-                    </TabsContent>
-                  </Tabs>
-                </div>
-
-                <div className="space-y-4">
-                  <Label>Categories of Interest</Label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {Object.keys(categoryCount).map((category) => (
-                      <div key={category} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`category-${category}`}
-                          checked={selectedCategories.includes(category)}
-                          onCheckedChange={() => handleCategoryToggle(category)}
-                        />
-                        <label
-                          htmlFor={`category-${category}`}
-                          className="text-sm cursor-pointer"
-                        >
-                          {category}
-                        </label>
+                
+                <p className="text-sm">
+                  Hello there,<br /><br />
+                  Here are this week's top AI breakthroughs and discoveries curated for you.
+                </p>
+                
+                <div className="space-y-4 mt-4">
+                  {digestItems.map((item, i) => (
+                    <div key={i} className="border-t pt-3">
+                      <h4 className="font-medium text-primary">{item.title}</h4>
+                      <p className="text-sm my-1">{item.summary.substring(0, 100)}...</p>
+                      <div className="flex flex-wrap gap-1 mt-2">
+                        {item.tags.slice(0, 3).map((tag, i) => (
+                          <span key={i} className="text-xs bg-muted px-2 py-1 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
                       </div>
+                      <a 
+                        href="#" 
+                        className="text-xs text-primary flex items-center mt-2 hover:underline"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          toast.info(`Viewing source for ${item.title}`);
+                        }}
+                      >
+                        Read more <ArrowRight className="h-3 w-3 ml-1" />
+                      </a>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="text-xs text-muted-foreground border-t pt-4 mt-4">
+                  <p>
+                    You're receiving this email because you subscribed to AIgen Digest.
+                    <br />
+                    To unsubscribe or change your preferences, click <a href="#" className="text-primary hover:underline">here</a>.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div>
+          {subscribed ? (
+            <Card className="shadow-md hover:shadow-lg transition-shadow bg-gradient-to-br from-primary/5 to-secondary/5">
+              <CardHeader>
+                <div className="mx-auto w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                  <Check className="h-6 w-6 text-green-600" />
+                </div>
+                <CardTitle className="text-center">Subscription Successful!</CardTitle>
+                <CardDescription className="text-center">
+                  You've been added to our digest list
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4 text-center">
+                <p>
+                  Thank you for subscribing to the AIgen Digest. Your first digest will be delivered on the next scheduled date.
+                </p>
+                <div className="bg-muted p-4 rounded-md inline-block mx-auto">
+                  <div className="flex items-center mb-2">
+                    <Mail className="h-4 w-4 mr-2 text-primary" />
+                    <span className="font-medium">{email}</span>
+                  </div>
+                  <div className="flex items-center mb-2">
+                    <Calendar className="h-4 w-4 mr-2 text-primary" />
+                    <span className="capitalize">{frequency} digest</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {categories.map((category) => (
+                      <span key={category} className="text-xs bg-background px-2 py-1 rounded-full">
+                        {category}
+                      </span>
                     ))}
                   </div>
                 </div>
-
-                <div className="space-y-4">
-                  <Label>Sources</Label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="source-github" defaultChecked />
-                      <label htmlFor="source-github" className="text-sm cursor-pointer">
-                        GitHub
-                      </label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="source-huggingface" defaultChecked />
-                      <label htmlFor="source-huggingface" className="text-sm cursor-pointer">
-                        Hugging Face
-                      </label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Checkbox id="source-arxiv" defaultChecked />
-                      <label htmlFor="source-arxiv" className="text-sm cursor-pointer">
-                        ArXiv
-                      </label>
+              </CardContent>
+              <CardFooter className="flex justify-center">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setSubscribed(false)}
+                >
+                  Edit Subscription
+                </Button>
+              </CardFooter>
+            </Card>
+          ) : (
+            <Card className="shadow-md hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>Subscribe to Digest</CardTitle>
+                <CardDescription>
+                  Customize your AI research digest
+                </CardDescription>
+              </CardHeader>
+              <form onSubmit={handleSubmit}>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input 
+                      id="name" 
+                      placeholder="Your name" 
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input 
+                      id="email" 
+                      type="email" 
+                      placeholder="your@email.com" 
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Frequency</Label>
+                    <div className="flex flex-col gap-2">
+                      <Tabs value={frequency} onValueChange={setFrequency}>
+                        <TabsList className="grid grid-cols-3">
+                          <TabsTrigger value="daily">Daily</TabsTrigger>
+                          <TabsTrigger value="weekly">Weekly</TabsTrigger>
+                          <TabsTrigger value="monthly">Monthly</TabsTrigger>
+                        </TabsList>
+                      </Tabs>
                     </div>
                   </div>
-                </div>
+                  
+                  <div className="space-y-2">
+                    <Label>Categories</Label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {categoryOptions.map((category) => (
+                        <div key={category.id} className="flex items-center space-x-2">
+                          <Checkbox 
+                            id={category.id} 
+                            checked={categories.includes(category.id)}
+                            onCheckedChange={() => handleCategoryChange(category.id)}
+                          />
+                          <label 
+                            htmlFor={category.id}
+                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            {category.label}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="notes">Additional Notes (Optional)</Label>
+                    <Textarea 
+                      id="notes" 
+                      placeholder="Tell us about your research interests..."
+                      className="resize-none"
+                    />
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full" type="submit" disabled={submitting}>
+                    {submitting ? (
+                      <>
+                        <Sparkles className="mr-2 h-4 w-4 animate-spin" />
+                        Processing...
+                      </>
+                    ) : (
+                      "Subscribe Now"
+                    )}
+                  </Button>
+                </CardFooter>
               </form>
+            </Card>
+          )}
+        </div>
+      </div>
+
+      <div className="mt-12 space-y-8 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold text-center">Why Subscribe?</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center pb-2">
+              <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center mb-2">
+                <Sparkles className="h-6 w-6 text-primary" />
+              </div>
+              <CardTitle className="text-lg">Save Time</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground">
+              Get curated summaries of the most important AI developments without sifting through hundreds of papers.
             </CardContent>
-            <CardFooter>
-              <Button className="w-full" onClick={handleSubmit}>
-                <Mail className="mr-2 h-4 w-4" /> Subscribe to Digest
-              </Button>
-            </CardFooter>
           </Card>
-        )}
-
-        <div className="mt-16 space-y-8">
-          <div className="bg-muted p-8 rounded-lg">
-            <h3 className="text-xl font-bold mb-4">Sample Digest</h3>
-            <div className="space-y-6">
-              <div className="border-l-4 border-primary pl-4 py-2">
-                <h4 className="font-bold">GPT-4-Vision: Multimodal Capabilities for Analyzing Images</h4>
-                <p className="text-sm text-muted-foreground mb-2">
-                  New model from OpenAI that can analyze and understand images, providing detailed descriptions and answering questions about visual content.
-                </p>
-                <div className="flex space-x-2">
-                  <span className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">
-                    #multimodal
-                  </span>
-                  <span className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">
-                    #vision
-                  </span>
-                </div>
+          
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center pb-2">
+              <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center mb-2">
+                <Mail className="h-6 w-6 text-primary" />
               </div>
-
-              <div className="border-l-4 border-primary pl-4 py-2">
-                <h4 className="font-bold">DALL-E 3: Improved Image Generation with Better Control</h4>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Latest version of DALL-E with enhanced control over image composition, style consistency, and text rendering within generated images.
-                </p>
-                <div className="flex space-x-2">
-                  <span className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">
-                    #image-generation
-                  </span>
-                  <span className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 px-2 py-0.5 rounded-full">
-                    #DALL-E
-                  </span>
-                </div>
+              <CardTitle className="text-lg">Personalized</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground">
+              Receive updates only on the topics you care about with our customizable category filters.
+            </CardContent>
+          </Card>
+          
+          <Card className="shadow-md hover:shadow-lg transition-shadow">
+            <CardHeader className="text-center pb-2">
+              <div className="w-12 h-12 mx-auto bg-primary/10 rounded-lg flex items-center justify-center mb-2">
+                <AlertCircle className="h-6 w-6 text-primary" />
               </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <p className="text-muted-foreground mb-4">
-              Not sure if the digest is right for you?
-            </p>
-            <Button variant="outline" asChild>
-              <a href="#sample-digest">View Full Sample Digest</a>
-            </Button>
-          </div>
+              <CardTitle className="text-lg">Never Miss Out</CardTitle>
+            </CardHeader>
+            <CardContent className="text-center text-sm text-muted-foreground">
+              Stay at the forefront of AI innovation with regular updates delivered directly to your inbox.
+            </CardContent>
+          </Card>
+        </div>
+        
+        <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 text-center mt-12">
+          <h3 className="text-xl font-bold mb-2">Join 10,000+ AI enthusiasts</h3>
+          <p className="text-muted-foreground mb-4">
+            Researchers, developers, and students who rely on our digest to stay informed.
+          </p>
+          <Button 
+            size="lg" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Subscribe Now
+          </Button>
         </div>
       </div>
     </div>
